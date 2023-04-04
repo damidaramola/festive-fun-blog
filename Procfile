@@ -1,0 +1,1 @@
+web: gunicorn festive-fun-blog.wsgi
