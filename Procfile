@@ -1,1 +1,1 @@
-web: gunicorn festive-fun-blog.wsgi
+web: gunicorn festivefun.wsgi
