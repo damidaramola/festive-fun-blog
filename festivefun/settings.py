@@ -129,9 +129,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dkkkwd8ho',
-    'API_KEY': '334993585757117',
-    'API_SECRET': 'eDOi-rjF2P4J77AqxejhVxvbekA'
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_CLOUD_SECRET')
 }
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
