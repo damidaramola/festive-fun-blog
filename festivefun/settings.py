@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'cloudinary_storage',
+    
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'cloudinary',
     'blog',
 ]
@@ -127,7 +128,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dkkkwd8ho',
+    'API_KEY': '334993585757117',
+    'API_SECRET': 'eDOi-rjF2P4J77AqxejhVxvbekA'
+}
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
