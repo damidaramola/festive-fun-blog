@@ -3,7 +3,7 @@ from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-# Create model for each blog post 
+# Create model for each blog post with tags 
 
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
@@ -22,10 +22,25 @@ class Post(models.Model):
     
     class Meta:
         ordering = ['-created_on']
-        
+           
     def __str__(self):
         return self.title
-    
+
     def number_of_claps(self):
         return self.claps.count()
+    
+        
+class Comment(models.Model):
+    user_name = models.CharField(max_length=80)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)    
+    accepted = models.BooleanField(default=False)
+     
+    class Meta:
+        ordering = ['-created_on']
+        
+    def __str__(self):
+        return f"Comment {self.body} written by {self.user_name}"
     
