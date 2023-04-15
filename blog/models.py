@@ -16,7 +16,7 @@ class Post(models.Model):
                                related_name='blog_articles')
     body = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
-    excerpt = models.TextField(blank=True)
+    exerpt = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     claps = models.ManyToManyField(User, related_name='blog_claps', blank=True)
