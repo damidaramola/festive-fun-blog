@@ -12,7 +12,8 @@ class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField()
     tags = TaggableManager()
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_articles')
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='blog_articles')
     body = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
     excerpt = models.TextField(blank=True)
@@ -29,10 +30,12 @@ class Post(models.Model):
     def number_of_claps(self):
         return self.claps.count()
     
-        
+    
+#  add comment section       
 class Comment(models.Model):
     user_name = models.CharField(max_length=80)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,
+                             related_name='comments')
     email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)    
