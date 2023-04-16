@@ -7,10 +7,10 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title', 'slug', 'status', 'created_on')
+    prepopulated_fields = {'slug': ('title', )}
+    list_display = ('title', 'slug', 'status', 'created_on', 'author')
     search_fields = ['title', 'blog']
-    summernote_fields = ('blog')
+    summernote_fields = ('body')
     list_filter = ('status', 'created_on')
 
 #    allows you to manage comments made by Users
@@ -21,7 +21,7 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('body', 'user_name', 'accepted', 'created_on')
     list_filter = ('accepted', 'created_on')
     search_fields = ('user_name', 'email', 'body')
-   
+  
     # accept comments from users on blog
     actions = ['accepted_comments']
    

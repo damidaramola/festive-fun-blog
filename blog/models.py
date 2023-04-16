@@ -5,7 +5,7 @@ from cloudinary.models import CloudinaryField
 
 # Create model for each blog post with tags 
 
-STATUS = ((0, 'Draft'), (1, 'Published'))
+STATUS = ((0, 'Draft'), (1, 'Published')) 
 
 
 class Post(models.Model):
