@@ -15,8 +15,13 @@
 <body>
 
 <h1>
+  <!-- displays posts on page -->
    {% for post in posts%}
-   {{post.}}
+   {{post.title}}<br>
+   {{post.author}}<br><br>
+   
+   {% endfor %}
+
 </h1>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
