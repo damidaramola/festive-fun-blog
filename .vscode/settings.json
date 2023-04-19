@@ -29,5 +29,8 @@
       "festivefun",
       "summernote",
       "taggit"
-   ]
+   ],
+   "[html]": {
+      "editor.defaultFormatter": "HookyQR.beautify"
+   }
 }
