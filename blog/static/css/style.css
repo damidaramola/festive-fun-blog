@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto:100, 200, 300, 400, 500, 600, 700');
 
+html::-webkit-scrollbar{
+    display:none;
+}
 
 
 
@@ -14,12 +17,19 @@
 .navbar{
     font-size: 1.1rem;
     letter-spacing:0.1rem;
-    align-items: center;
+    box-shadow: 0 .5rem .5rem rgba(0,0,0,.1);
+    z-index: 2;
 }
 
 
 
 /* carousel */
+.carousel-indicators li {
+width:10px;
+height: 10px;
+border-radius:100%
+
+}
 
 
 
