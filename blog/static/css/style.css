@@ -21,9 +21,16 @@ html::-webkit-scrollbar{
     z-index: 2;
 }
 
+.navbar-collapse {
+    flex-grow: 0;
+}
 
 
 /* carousel */
+
+.carousel-item{
+    height:40rem
+}
 .carousel-indicators li {
 width:10px;
 height: 10px;
@@ -40,7 +47,10 @@ border-radius:100%
 /* carousel content */
 
 
+/* search bar */
+.input-group {max-width:400px;
 
+}
 /* fixed background image */
 
 
