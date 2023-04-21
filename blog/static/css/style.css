@@ -29,7 +29,8 @@ html::-webkit-scrollbar{
 /* carousel */
 
 .carousel-item{
-    height:40rem
+    height:40rem;
+    background-size: cover;
 }
 .carousel-indicators li {
 width:10px;
