@@ -28,16 +28,13 @@ html::-webkit-scrollbar{
 
 /* carousel */
 
-.carousel-item{
-    height:40rem;
-    background-size: cover;
-}
 .carousel-indicators li {
 width:10px;
 height: 10px;
 border-radius:100%
 
 }
+
 
 
 
@@ -60,3 +57,19 @@ border-radius:100%
 
 
 /* media queries */
+@media (max-width:992px){
+
+}
+
+@media (max-width:768px){
+
+}
+
+@media (max-width:576px){
+    .input-group{
+        display:none;
+    } 
+    .featured{
+        margin: 10px;
+    }
+}
