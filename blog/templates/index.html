@@ -86,29 +86,7 @@
   <!-- add cards to view blog posts -->
   <div class="container-fluid p-5">
     <div class="row">
-      <div class="col-lg-3 mb-4">
-        <div class="card">
-          <img src="../satic/img/outdoor-festival.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h6 class="text-muted text-uppercase">
-              Posted on...
-            </h6>
-            <h5 class="card-title text-uppercase">
-              blog title here
-            </h5>
-            <div class="text-muted">
-              <p class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vel debitis deleniti aperiam dolores
-                laboriosam inventore et sed nemo alias quibusdam id maxime iure maiores, aut ex quae repellat optio?
-              </p>
-              <p class="text-capitalize">
-                read more <i class="fas fa-long-arrow-alt-right ml-2"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      {% for post in posts %}
       <div class="col-lg-3 mb-4">
         <div class="card">
           <img src="../static/img/outdoor-festival.jpg" alt="" class="card-img-top">
@@ -117,7 +95,7 @@
               Posted on...
             </h6>
             <h5 class="card-title text-uppercase">
-              blog title here
+              {{ post.title }}
             </h5>
             <div class="text-muted">
               <p class="card-text">
@@ -129,52 +107,10 @@
               </p>
             </div>
           </div>
+          
         </div>
       </div>
-      <div class="col-lg-3 mb-4">
-        <div class="card">
-          <img src="../static/img/outdoor-festival.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h6 class="text-muted text-uppercase">
-              Posted on...
-            </h6>
-            <h5 class="card-title text-uppercase">
-              blog title here
-            </h5>
-            <div class="text-muted">
-              <p class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vel debitis deleniti aperiam dolores
-                laboriosam inventore et sed nemo alias quibusdam id maxime iure maiores, aut ex quae repellat optio?
-              </p>
-              <p class="text-capitalize">
-                read more <i class="fas fa-long-arrow-alt-right ml-2"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 mb-4">
-        <div class="card">
-          <img src="../static/img/outdoor-festival.jpg" alt="" class="card-img-top">
-          <div class="card-body">
-            <h6 class="text-muted text-uppercase">
-              Posted on...
-            </h6>
-            <h5 class="card-title text-uppercase">
-              blog title here
-            </h5>
-            <div class="text-muted">
-              <p class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vel debitis deleniti aperiam dolores
-                laboriosam inventore et sed nemo alias quibusdam id maxime iure maiores, aut ex quae repellat optio?
-              </p>
-              <p class="text-capitalize">
-                read more <i class="fas fa-long-arrow-alt-right ml-2"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {% endfor%}
 
     </div>
   </div>
