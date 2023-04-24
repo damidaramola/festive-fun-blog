@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render,  get_object_or_404
 from .models import Post
 from django.views import generic 
 
@@ -16,6 +16,6 @@ def home_list(request):
     
 
 def single_post(request, post):
-    post = get_object_or_404(Post, slug=post, status=1)
+    post = get_object_or_404(Post, slug=post)
     return render(request, 'single_post.html', {'post': post})
 
