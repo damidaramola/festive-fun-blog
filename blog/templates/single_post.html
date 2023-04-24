@@ -12,7 +12,7 @@
                     <h1 class="font-weight-bolder mb-1">{{post.title}}</h1>
                     <!-- Post meta content-->
                     <div class="text-muted font-italic mb-2">Created on {{post.created_on}} by {{post.author}}</div>
-                    <!-- Post categories-->
+                    <!-- Post categories(change tags!!)-->
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                 </header>
@@ -20,7 +20,9 @@
                 <figure class="mb-4"><img class="img-fluid rounded" src="../static/img/orange-festival-banner.jpg" alt="..." /></figure>
                 <!-- Post content-->
                 <section class="mb-5">
+                    <p>
                     {{post.body}}
+                </p>
                 </section>
             </article>
             <!-- Comments section-->

@@ -2,6 +2,7 @@ from django.db import models
 from taggit.managers import TaggableManager
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.urls import reverse
 
 # Create model for each blog post with tags 
 
@@ -20,6 +21,9 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     claps = models.ManyToManyField(User, related_name='blog_claps', blank=True)
+    
+    def get_absolute_url(self):
+        return reverse('blog:single_post', args=[self.slug])   
     
     class Meta:
         ordering = ['-created_on']
