@@ -92,15 +92,14 @@
           <img src="../static/img/outdoor-festival.jpg" alt="" class="card-img-top">
           <div class="card-body">
             <h6 class="text-muted text-uppercase">
-              Posted on...
+              created on {{ post.created_on}}
             </h6>
             <h5 class="card-title text-uppercase">
               {{ post.title }}
             </h5>
             <div class="text-muted">
               <p class="card-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vel debitis deleniti aperiam dolores
-                laboriosam inventore et sed nemo alias quibusdam id maxime iure maiores, aut ex quae repellat optio?
+                {{ post.exerpt }}
               </p>
               <p class="text-capitalize">
                 read more <i class="fas fa-long-arrow-alt-right ml-2"></i>
