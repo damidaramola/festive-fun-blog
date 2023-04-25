@@ -95,14 +95,16 @@
               created on {{ post.created_on}}
             </h6>
             <h5 class="card-title text-uppercase">
-              {{ post.title }}
+              <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
             </h5>
             <div class="text-muted">
               <p class="card-text">
                 {{ post.exerpt }}
               </p>
               <p class="text-capitalize">
-                read more <i class="fas fa-long-arrow-alt-right ml-2"></i>
+               
+                <a href="{{post.get_absolute_url}}">read more </a>
+                <i class="fas fa-long-arrow-alt-right ml-2"></i>
               </p>
             </div>
           </div>
