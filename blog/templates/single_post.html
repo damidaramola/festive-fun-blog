@@ -10,32 +10,47 @@
                 <header class="mb-4">
                     <!-- Post title-->
                     <h1 class="font-weight-bolder mb-1">{{post.title}}</h1>
-                    <!-- Post meta content-->
+                    <!-- Post created on and author-->
                     <div class="text-muted font-italic mb-2">Created on {{post.created_on}} by {{post.author}}</div>
                     <!-- Post categories(change tags!!)-->
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
                 </header>
-                <!-- Preview image figure-->
-                <figure class="mb-4"><img class="img-fluid rounded" src="../static/img/orange-festival-banner.jpg" alt="..." /></figure>
-                <!-- Post content-->
+                <!-- image featured in post -->
+                <figure class="mb-4"><img class="img-fluid rounded" src="../static/img/orange-festival-banner.jpg"
+                        alt="..." /></figure>
+                <!-- Post content/body of text-->
                 <section class="mb-5">
                     <p>
-                    {{post.body|safe}}
-                </p>
+                        {{post.body|safe}}
+                    </p>
                 </section>
-               <p><i class="fa-sharp fa-solid fa-hands-clapping fa-lg"></i>
-                {{post.number_of_claps}}
-               </p> 
+                <!-- number of claps/likes -->
+                <p><i class="fa-sharp fa-solid fa-hands-clapping fa-lg"></i>
+                    {{post.number_of_claps}}
+                </p>
             </article>
             <!-- Comments section-->
             <section class="mb-5">
                 <div class="card bg-light">
+                    <h4 class="ml-4 mt-3">Comments:</h4>
                     <div class="card-body">
                         <!-- Comment form-->
-                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+
+                        <form class="mb-4">
+                            <textarea class="form-control" rows="3"
+                                placeholder="Join the discussion and leave a comment!">
+                            </textarea></form>
                     </div>
-                    </div>  
+                    {% with comments.count as all_comments %}
+                    <div class="d-flex ">
+                        <strong class="text-secondary ml-2 mb-2">
+                            <i class="fa-solid fa-comments"></i>
+                            {{ all_comments}}
+                        </strong>
+                        {% endwith %}
+                    </div>
+                </div>
             </section>
         </div>
     </div>
