@@ -91,11 +91,12 @@
         <div class="card">
           <img src="../static/img/outdoor-festival.jpg" alt="" class="card-img-top">
           <div class="card-body">
+            <a class="text-dark text-decoration-none" href="{{post.get_absolute_url}}">
             <h6 class="text-muted text-uppercase">
               created on {{ post.created_on}}
             </h6>
             <h5 class="card-title text-uppercase">
-              <a href="{{post.get_absolute_url}}">{{ post.title }}</a>
+        {{ post.title }}
             </h5>
             <div class="text-muted">
               <p class="card-text">
@@ -103,9 +104,10 @@
               </p>
               <p class="text-capitalize">
                
-                <a href="{{post.get_absolute_url}}">read more </a>
+                read more 
                 <i class="fas fa-long-arrow-alt-right ml-2"></i>
               </p>
+            </a>
             </div>
           </div>
           
