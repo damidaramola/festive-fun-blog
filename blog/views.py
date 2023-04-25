@@ -1,6 +1,7 @@
 from django.shortcuts import render,  get_object_or_404
 from .models import Post
 from django.views import generic 
+from .forms import UserCommentForm
 
 
 # Create your views here.
@@ -27,7 +28,8 @@ def single_post(request, post):
     return render(request, 'single_post.html', {
         'post': post,
         'comments': comments,
-        'clapped': clapped
+        'clapped': clapped,
+        'comment_form': UserCommentForm(),
         },
                   )
     
