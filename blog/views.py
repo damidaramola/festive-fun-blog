@@ -16,6 +16,18 @@ def home_list(request):
     
 
 def single_post(request, post):
+    all_posts = Post.objects.all().filter(status=1)
     post = get_object_or_404(Post, slug=post)
-    return render(request, 'single_post.html', {'post': post})
+    comments = post.comments.filter(accepted=True).order_by('created_on')
+    clapped = False
+    if post.claps.filter(id=self.request.user.id).exists():
+        clapped = True
+    return render(request, 'single_post.html', {
+        'post': post,
+        'comments': comments,
+        'clapped': clapped
+        },
+                  )
+    
+    
 
