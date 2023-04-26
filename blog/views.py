@@ -25,17 +25,8 @@ def single_post(request, post):
     clapped = False
     if post.claps.filter(id=request.user.id).exists():
         clapped = True
-    return render(request, 'single_post.html', {
-        'post': post,
-        'comments': comments,
-        'clapped': clapped,
-        'comment_form': UserCommentForm(),
-        },
-                  )
-    
+  
     # saving and showing comments by users/ displaying comment form
-    
-def save_comment(request, post):
     new_comment = None
     if request.method == 'POST':
         comment_form = UserCommentForm(request.POST)
@@ -48,6 +39,7 @@ def save_comment(request, post):
         comment_form = UserCommentForm()
     return render(request, 'single_post.html', {'post': post,
                                                 'comments': new_comment,
+                                                'clapped': clapped,
                                                 'commented': True,
                                                 'comment_form': UserCommentForm(),
                                                 'comments': comments,

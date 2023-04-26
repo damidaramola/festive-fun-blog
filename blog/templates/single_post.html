@@ -37,15 +37,15 @@
                     <div class="card-body">
                         <!-- Comment form-->
                         {% for comment in comments %}
-                        <div class="text-muted font-italic mb-2"> {{ comment.name }}{{ comment.created_on }}</div>
-                        <form class="mb-4">
-                            <textarea class="form-control" rows="3"
-                                placeholder="Join the discussion and leave a comment!">
-                        </textarea>{{ comment.body | linebreaks }}</form>
+                        <div class="mb-1 d-flex">{{forloop.counter}}. {{ comment.body | linebreaks }}
+                        </div>
+                        <div class="text-muted font-italic mb-2"> By {{ comment.user_name }} on {{ comment.created_on }}</div>
+                        <hr>
+                         {% empty %}
+                         <p class="font-italic" > There are no comments on this post</p>
                         {% endfor %}
                     </div>
-
-
+                
                     {% with comments.count as all_comments %}
                     <div class="d-flex ">
                         <strong class="text-secondary ml-2 mb-2">
@@ -56,9 +56,9 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 card mb-4  mt-3 ">
+                <div class="col-md-12 card mb-4 mt-3 ">
                     <div class="card-body ">
-
+                 <!-- allow only authenticated users to comment -->
                         {% if commented %}
                         <div class="alert alert-success" role="alert">
                             Your comment is awaiting approval
