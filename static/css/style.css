@@ -4,7 +4,9 @@ html::-webkit-scrollbar{
     display:none;
 }
 
-
+body{
+    min-height: 100vh;
+}
 
 /* navigation */
 
@@ -44,6 +46,12 @@ border-radius:100%
 
 /* carousel content */
 
+/* User account pages */
+.btn-account{
+    background-color: #bc3fcc;
+    color: #fff;
+    border-color: black;
+}
 
 /* search bar */
 .input-group {max-width:400px;
@@ -54,7 +62,10 @@ border-radius:100%
 
 
 /* footer */
-
+footer{
+    position:sticky;
+    top: 100%;
+}
 
 /* media queries */
 @media (max-width:992px){

@@ -20,7 +20,7 @@
                 <figure class="mb-4"><img class="img-fluid rounded" src="../static/img/orange-festival-banner.jpg"
                         alt="..." /></figure>
                 <!-- Post content/body of text-->
-                <section class="mb-5">
+                <section class="mb-5 ">
                     <p>
                         {{post.body|safe}}
                     </p>
@@ -70,7 +70,7 @@
                         <form method="post" style="margin-top: 1.3em;">
                             {{ comment_form | crispy }}
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-warning">Submit</button>
+                            <button type="submit" class="btn btn-account">Submit</button>
                         </form>
                         {% endif %}
                         {% endif %}
