@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment
+from .models import Post, Comment, Category
 from django_summernote.admin import SummernoteModelAdmin
 
 # allows you to manage functionality of blog in admin view
@@ -27,3 +27,7 @@ class CommentAdmin(admin.ModelAdmin):
    
     def accept_comments(self, request, queryset):
         queryset.update(accepted=True)
+
+       
+admin.site.register(Category)
+        
