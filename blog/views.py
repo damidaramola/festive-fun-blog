@@ -1,7 +1,6 @@
 from django.shortcuts import render,  get_object_or_404, reverse
 from .models import Post
-from django.views import generic 
-from django.views.generic import View
+from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .forms import UserCommentForm
 
@@ -51,10 +50,10 @@ def single_post(request, post):
 
 
 class ClapPosts(View):   
-    def post(self, request, slug):
+    def post(self, request, post, *args, **kwargs):
         post = get_object_or_404(Post, slug=post)
         if post.claps.filter(id=request.user.id).exists():
             post.claps.remove(request.user)
         else:
             post.claps.add(request.user)
-        return HttpResponseRedirect(reverse('single_post', args=[slug]))
+        return HttpResponseRedirect(reverse('blog:single_post', args=[post.slug]))
