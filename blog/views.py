@@ -1,6 +1,8 @@
-from django.shortcuts import render,  get_object_or_404, HttpResponseRedirect
+from django.shortcuts import render,  get_object_or_404, reverse
 from .models import Post
 from django.views import generic 
+from django.views.generic import View
+from django.http import HttpResponseRedirect
 from .forms import UserCommentForm
 
 
@@ -20,7 +22,7 @@ def home_list(request):
 
 def single_post(request, post):
     all_posts = Post.objects.all().filter(status=1)
-    post = get_object_or_404(Post, slug=post, )
+    post = get_object_or_404(Post, slug=post)
     comments = post.comments.filter(accepted=True).order_by('created_on')
     clapped = False
     if post.claps.filter(id=request.user.id).exists():
@@ -44,4 +46,15 @@ def single_post(request, post):
                                                 'comment_form': UserCommentForm(),
                                                 'comments': comments,
                                                 },)
-                  
+
+# like(clap) and unlike(un-clap) posts
+
+
+class ClapPosts(View):   
+    def post(self, request, slug):
+        post = get_object_or_404(Post, slug=post)
+        if post.claps.filter(id=request.user.id).exists():
+            post.claps.remove(request.user)
+        else:
+            post.claps.add(request.user)
+        return HttpResponseRedirect(reverse('single_post', args=[slug]))
