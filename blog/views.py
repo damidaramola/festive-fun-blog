@@ -19,32 +19,52 @@ def home_list(request):
 # view to show full post content + comments + likes
 
 
-def single_post(request, post):
-    all_posts = Post.objects.all().filter(status=1)
-    post = get_object_or_404(Post, slug=post)
-    comments = post.comments.filter(accepted=True).order_by('created_on')
-    clapped = False
-    if post.claps.filter(id=request.user.id).exists():
-        clapped = True
-  
+class SinglePost(View):
+    def get(self, request, post, *args, **kwargs):
+        all_posts = Post.objects.all().filter(status=1)
+        post = get_object_or_404(Post, slug=post)
+        comments = post.comments.filter(accepted=True).order_by('created_on')
+        clapped = False
+        if post.claps.filter(id=self.request.user.id).exists():
+            clapped = True
+        return render(
+            request,
+            "single_post.html",
+            {
+                "post": post,
+                "comments": comments,
+                "commented": False,
+                "clapped": clapped,
+                "comment_form": UserCommentForm()
+            },
+        )
+    
     # saving and showing comments by users/ displaying comment form
-    new_comment = None
-    if request.method == 'POST':
-        comment_form = UserCommentForm(request.POST)
+    def post(self, request, post, *args, **kwargs):
+        all_posts = Post.objects.all().filter(status=1)
+        post = get_object_or_404(Post, slug=post)
+        comments = post.comments.filter(accepted=True).order_by('created_on')
+        clapped = False
+        if post.claps.filter(id=self.request.user.id).exists():
+            clapped = True
+        
+        comment_form = UserCommentForm(data=request.POST)
         if comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            new_comment.post = post
-            new_comment.save()
-            return HttpResponseRedirect('/' + post.slug)
-    else:
-        comment_form = UserCommentForm()
-    return render(request, 'single_post.html', {'post': post,
-                                                'comments': new_comment,
-                                                'clapped': clapped,
-                                                'commented': True,
-                                                'comment_form': UserCommentForm(),
-                                                'comments': comments,
-                                                },)
+            comment_form.instance.email = request.user.email
+            comment_form.instance.name = request.user.username
+            comment = comment_form.save(commit=False)
+            comment.post = post
+            comment.save()
+        else:
+            comment_form = UserCommentForm()
+        
+        return render(request,
+                      "single_post.html", 
+                      {"post": post,
+                       "comments": comments,
+                       "clapped": clapped,
+                       "commented": True,
+                       "comment_form": comment_form, },)
 
 # like(clap) and unlike(un-clap) posts
 
