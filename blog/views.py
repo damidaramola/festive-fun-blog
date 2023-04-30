@@ -1,4 +1,4 @@
-from django.shortcuts import render,  get_object_or_404, reverse
+from django.shortcuts import render,  get_object_or_404, reverse 
 from .models import Post
 from django.views import generic, View
 from django.http import HttpResponseRedirect
@@ -16,17 +16,24 @@ def home_list(request):
     return render(request, 'index.html', {'posts': all_posts})
     paginate_by = 4
     
+# about page
+
+
+def about(request):
+    return render(request, 'about.html')
+
 # view to show full post content + comments + likes
 
 
 class SinglePost(View):
-    def get(self, request, post, *args, **kwargs):
+    def get(self, request, post, id=0, *args, **kwargs, ):
         all_posts = Post.objects.all().filter(status=1)
         post = get_object_or_404(Post, slug=post)
         comments = post.comments.filter(accepted=True).order_by('created_on')
         clapped = False
         if post.claps.filter(id=self.request.user.id).exists():
             clapped = True
+           
         return render(
             request,
             "single_post.html",
@@ -60,12 +67,16 @@ class SinglePost(View):
         
         return render(request,
                       "single_post.html", 
+                      
                       {"post": post,
                        "comments": comments,
                        "clapped": clapped,
                        "commented": True,
                        "comment_form": comment_form, },)
 
+
+    
+        
 # like(clap) and unlike(un-clap) posts
 
 
@@ -77,3 +88,5 @@ class ClapPosts(View):
         else:
             post.claps.add(request.user)
         return HttpResponseRedirect(reverse('blog:single_post', args=[post.slug]))
+    
+

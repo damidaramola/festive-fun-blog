@@ -27,7 +27,11 @@ body{
     flex-grow: 0;
 }
 
+/* blog section */
 
+.main-title{
+    text-align: center;
+}
 /* carousel */
 
 .carousel-indicators li {
@@ -81,7 +85,5 @@ footer{
     .input-group{
         display:none;
     } 
-    .featured{
-        margin: 10px;
-    }
+    
 }
