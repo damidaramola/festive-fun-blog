@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto:100, 200, 300, 400, 500, 600, 700');
 
 html::-webkit-scrollbar{
     display:none;
@@ -41,14 +40,42 @@ border-radius:100%
 
 }
 
+#default-carousel{
+    box-shadow: 0 1rem 1rem rgba(0,0,0,.1);
+}
+
+.carousel-inner{
+    max-height: 38rem!important;
+}
+
+.carousel-caption{
+    position: absolute;
+    top: 40%;
+    transform: translateY(-40%);
+}
+
+.carousel-caption h1{
+    font-size:3rem;
+  
+}
+
+.carousel-caption h3{
+    font-size:2rem;
+   
+}
+
+.btn-lg{
+    font-size:1rem;
+   
+}
 
 
+.bg-custom{
+ background-color: rgba(0,0,0,.5);
+ border-radius:1rem;
+ color:white;
+}
 
-/* carousel transition speed */
-
-
-
-/* carousel content */
 
 /* User account pages */
 .btn-account{
@@ -56,14 +83,6 @@ border-radius:100%
     color: #fff;
     border-color: black;
 }
-
-/* search bar */
-.input-group {max-width:400px;
-
-}
-/* fixed background image */
-
-/* forms */
 
 
 /* footer */
@@ -73,17 +92,50 @@ footer{
 }
 
 /* media queries */
+@media (max-width:1999.98px){
+    .carousel-caption h2{
+   
+        font-size: 2.3rem;
+    } 
+    .carousel-caption h5{
+        position: absolute;
+       
+        font-size: 1.8rem;
+    } 
+}
 @media (max-width:992px){
-
+    .carousel-caption h1{
+        font-size:2rem;
+      
+    }
+    
+    .carousel-caption h3{
+        font-size:1rem;
+       
+    }
+    
 }
 
 @media (max-width:768px){
-
+    .carousel-caption h1{
+        font-size:1.75rem;
+      
+    }
+    
+    .carousel-caption h3{
+        font-size:1rem;
+       
+    }
 }
 
 @media (max-width:576px){
-    .input-group{
-        display:none;
-    } 
+    .carousel-caption h1{
+        font-size:1rem;
+      
+    }
     
+    .carousel-caption h3{
+        font-size:.75rem;
+       
+    }
 }
