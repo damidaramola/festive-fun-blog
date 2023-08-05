@@ -32,7 +32,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-ALLOWED_HOSTS = ['8000-damidaramola-festivefun-d1wnjqkdp1w.ws-eu98.gitpod.io', 'localhost']
+ALLOWED_HOSTS = ['8000-damidaramola-festivefun-ldnqs06fk92.ws-eu102.gitpod.io',
+                 'localhost']
 
 
 # Application definition
@@ -53,7 +54,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'crispy_forms',
     'blog',
-    'taggit',
+  
 ]
 
 SITE_ID = 1
@@ -171,4 +172,3 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-TAGGIT_CASE_INSENSITIVE = True
