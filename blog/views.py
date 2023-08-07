@@ -1,4 +1,4 @@
-from django.shortcuts import render,  get_object_or_404, reverse 
+from django.shortcuts import render,  get_object_or_404, reverse
 from .models import Post
 from django.views import generic, View
 from django.http import HttpResponseRedirect
@@ -8,14 +8,14 @@ from .forms import UserCommentForm
 # Create your views here.
 
 
-# home page listing all posts 
+# home page listing all posts
 
 def home_list(request):
     # query to select all posts from the posts table in database
     all_posts = Post.objects.all().filter(status=1)
     return render(request, 'index.html', {'posts': all_posts})
     paginate_by = 4
-    
+
 # about page
 
 
@@ -33,7 +33,7 @@ class SinglePost(View):
         clapped = False
         if post.claps.filter(id=self.request.user.id).exists():
             clapped = True
-           
+
         return render(
             request,
             "single_post.html",
@@ -45,7 +45,7 @@ class SinglePost(View):
                 "comment_form": UserCommentForm()
             },
         )
-    
+
     # saving and showing comments by users/ displaying comment form
     def post(self, request, post, *args, **kwargs):
         all_posts = Post.objects.all().filter(status=1)
@@ -54,7 +54,7 @@ class SinglePost(View):
         clapped = False
         if post.claps.filter(id=self.request.user.id).exists():
             clapped = True
-        
+
         comment_form = UserCommentForm(data=request.POST)
         if comment_form.is_valid():
             comment_form.instance.email = request.user.email
@@ -64,10 +64,10 @@ class SinglePost(View):
             comment.save()
         else:
             comment_form = UserCommentForm()
-        
+
         return render(request,
-                      "single_post.html", 
-                      
+                      "single_post.html",
+
                       {"post": post,
                        "comments": comments,
                        "clapped": clapped,
@@ -75,12 +75,9 @@ class SinglePost(View):
                        "comment_form": comment_form, },)
 
 
-    
-        
 # like(clap) and unlike(un-clap) posts
 
-
-class ClapPosts(View):   
+class ClapPosts(View):
     def post(self, request, post, *args, **kwargs):
         post = get_object_or_404(Post, slug=post)
         if post.claps.filter(id=request.user.id).exists():
@@ -88,5 +85,3 @@ class ClapPosts(View):
         else:
             post.claps.add(request.user)
         return HttpResponseRedirect(reverse('blog:single_post', args=[post.slug]))
-    
-

@@ -33,7 +33,7 @@ DEBUG = True
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 ALLOWED_HOSTS = ['8000-damidaramola-festivefun-ldnqs06fk92.ws-eu102.gitpod.io',
-                 'localhost']
+                 'localhost', 'festivefun.herokuapp.com']
 
 
 # Application definition
