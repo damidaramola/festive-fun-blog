@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-ALLOWED_HOSTS = ['8000-damidaramola-festivefun-ldnqs06fk92.ws-eu102.gitpod.io',
+ALLOWED_HOSTS = ['8000-damidaramola-festivefun-ldnqs06fk92.ws-eu103.gitpod.io',
                  'localhost', 'festivefun.herokuapp.com']
 
 
