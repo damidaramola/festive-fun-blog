@@ -26,6 +26,10 @@ body{
     flex-grow: 0;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
 /* blog section */
 
 .main-title{

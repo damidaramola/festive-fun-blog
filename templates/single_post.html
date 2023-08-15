@@ -18,6 +18,8 @@
                         alt="orange-festival-banner" /></figure>
                 <!-- Post content/body of text-->
                 <section class="mb-5 ">
+                    <div> <strong>Category:</strong>
+                        {{post.category}}</div>
                     <p>
                         {{post.body|safe}}
                     </p>
@@ -92,6 +94,10 @@
                             {% csrf_token %}
                             <button type="submit" class="btn btn-account">Submit</button>
                         </form>
+                        {% else %}
+                        <p class="font-italic"> Sign in to comment -
+                            <a  href="{% url 'account_login' %}">Sign in here</a>
+                        </p>
                         {% endif %}
                         {% endif %}
                     </div>

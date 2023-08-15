@@ -84,4 +84,5 @@ class ClapPosts(View):
             post.claps.remove(request.user)
         else:
             post.claps.add(request.user)
-        return HttpResponseRedirect(reverse('blog:single_post', args=[post.slug]))
+        return HttpResponseRedirect(reverse('blog:single_post',
+                                            args=[post.slug]))
