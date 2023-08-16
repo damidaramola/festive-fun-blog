@@ -77,6 +77,7 @@ class SinglePost(View):
                        "commented": True,
                        "comment_form": comment_form, },)
 
+    # allows the user to edit the comments
     def edit_comment(self, request, post, id):
         comment = get_object_or_404(Comment, id=id)
 
@@ -93,6 +94,13 @@ class SinglePost(View):
 
         return render(request, "edit_comment.html",
                       {"comment_form": comment_form})
+
+    # allows the user to delete the comments
+    def delete_comment(request, id):
+        slug = request.POST.get('slug', '')
+        comment = Comment.objects.get(id=id)
+        comment.delete()
+        return redirect(reverse('single_post', args=[slug]))
 
 
 # like(clap) and unlike(un-clap) posts
