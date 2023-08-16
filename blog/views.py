@@ -47,6 +47,7 @@ class SinglePost(View):
         )
 
     # saving and showing comments by users/ displaying comment form
+    @method_decorator(login_required)
     def post(self, request, post, *args, **kwargs):
         all_posts = Post.objects.all().filter(status=1)
         post = get_object_or_404(Post, slug=post)
@@ -73,6 +74,23 @@ class SinglePost(View):
                        "clapped": clapped,
                        "commented": True,
                        "comment_form": comment_form, },)
+
+    def edit_comment(self, request, post, id):
+        comment = get_object_or_404(Comment, id=id)
+
+        if request.user != comment.user:
+            return HttpResponseForbidden()
+
+        if request.method == 'POST':
+            comment_form = UserCommentForm(data=request.POST, instance=comment)
+            if comment_form.is_valid():
+                comment = comment_form.save()
+
+        else:
+            comment_form = UserCommentForm(instance=comment)
+
+        return render(request, "edit_comment.html",
+                      {"comment_form": comment_form})
 
 
 # like(clap) and unlike(un-clap) posts
