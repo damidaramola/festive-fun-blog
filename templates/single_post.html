@@ -48,6 +48,7 @@
                             {{post.number_of_claps}}
                         </span>
                     </strong>
+                   
                 </div>
             </article>
             <!-- Comments section-->
@@ -60,6 +61,10 @@
                         <div class="mb-1 d-flex">{{forloop.counter}}. {{ comment.body | linebreaks }}
                         </div>
                         <div class="text-muted font-italic mb-2"> By {{ comment.user_name }} on {{ comment.created_on }}
+                            {% if comment.accepted %}
+                            <button class="btn btn-primary">Edit</button>
+                            <button class="btn btn-primary">Delete</button>
+                            {% endif%} 
                         </div>
                         <hr>
                         {% empty %}
