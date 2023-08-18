@@ -91,8 +91,6 @@ class ClapPosts(View):
                                             args=[post.slug]))
 
 
-# allows the user to edit the comments
-
 def edit_comment(request, id):
     comment = get_object_or_404(Comment, id=id)
 
@@ -100,12 +98,13 @@ def edit_comment(request, id):
         comment_form = UserCommentForm(data=request.POST, instance=comment)
         if comment_form.is_valid():
             comment = comment_form.save()
+            # Redirect to the single post view after successfully saving the edited comment
+            return redirect('blog:single_post', post=comment.post.slug)
 
     else:
         comment_form = UserCommentForm(instance=comment)
 
-    return render(request, "edit_comment.html",
-                  {"comment_form": comment_form})
+    return render(request, "edit_comment.html", {"comment_form": comment_form})
 
 
 def delete_comment(request, id):
