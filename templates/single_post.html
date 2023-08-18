@@ -14,7 +14,8 @@
                     <div class="text-muted font-italic mb-2">Created on {{post.created_on}} by {{post.author}}</div>
                 </header>
                 <!-- image featured in post -->
-                <figure class="mb-4"><img class="img-fluid rounded" src="https://res.cloudinary.com/dkkkwd8ho/image/upload/v1682269262/orange-festival-banner_bdwwtn.jpg"
+                <figure class="mb-4"><img class="img-fluid rounded"
+                        src="https://res.cloudinary.com/dkkkwd8ho/image/upload/v1682269262/orange-festival-banner_bdwwtn.jpg"
                         alt="orange-festival-banner" /></figure>
                 <!-- Post content/body of text-->
                 <section class="mb-5 ">
@@ -48,7 +49,7 @@
                             {{post.number_of_claps}}
                         </span>
                     </strong>
-                   
+
                 </div>
             </article>
             <!-- Comments section-->
@@ -61,10 +62,25 @@
                         <div class="mb-1 d-flex">{{forloop.counter}}. {{ comment.body | linebreaks }}
                         </div>
                         <div class="text-muted font-italic mb-2"> By {{ comment.user_name }} on {{ comment.created_on }}
-                            {% if comment.accepted %}
+
+                            {% if user.is_authenticated and user.username == comment.user_name %}
+
                             <button class="btn btn-primary">Edit</button>
-                            <button class="btn btn-primary">Delete</button>
-                            {% endif%} 
+
+                            <div >
+                                <!-- Create a Form -->
+                                <form  class="d-inline" action="{% url 'blog:delete_comment' comment.id %}" method="POST">
+
+                                    {% csrf_token %}
+                                    <input  type="hidden"/>
+                                    <button class="btn btn-primary"  type="submit" >
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+
+
+                            {% endif%}
                         </div>
                         <hr>
                         {% empty %}
@@ -72,7 +88,7 @@
                         {% endfor %}
                     </div>
 
-                    
+
                     <div class="d-flex ">
                         {% with comments.count as all_comments %}
                         <strong class="text-secondary ml-2 mb-2">
@@ -101,7 +117,7 @@
                         </form>
                         {% else %}
                         <p class="font-italic"> Sign in to comment -
-                            <a  href="{% url 'account_login' %}">Sign in here</a>
+                            <a href="{% url 'account_login' %}">Sign in here</a>
                         </p>
                         {% endif %}
                         {% endif %}

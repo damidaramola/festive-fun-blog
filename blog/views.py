@@ -1,7 +1,7 @@
-from django.shortcuts import render,  get_object_or_404, reverse
+from django.shortcuts import render,  get_object_or_404, reverse, redirect
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from .models import Post
+from .models import Post, Comment
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .forms import UserCommentForm
@@ -77,31 +77,6 @@ class SinglePost(View):
                        "commented": True,
                        "comment_form": comment_form, },)
 
-    # allows the user to edit the comments
-    def edit_comment(self, request, post, id):
-        comment = get_object_or_404(Comment, id=id)
-
-        if request.user != comment.user:
-            return HttpResponseForbidden()
-
-        if request.method == 'POST':
-            comment_form = UserCommentForm(data=request.POST, instance=comment)
-            if comment_form.is_valid():
-                comment = comment_form.save()
-
-        else:
-            comment_form = UserCommentForm(instance=comment)
-
-        return render(request, "edit_comment.html",
-                      {"comment_form": comment_form})
-
-    # allows the user to delete the comments
-    def delete_comment(request, id):
-        slug = request.POST.get('slug', '')
-        comment = Comment.objects.get(id=id)
-        comment.delete()
-        return redirect(reverse('single_post', args=[slug]))
-
 
 # like(clap) and unlike(un-clap) posts
 
@@ -114,3 +89,30 @@ class ClapPosts(View):
             post.claps.add(request.user)
         return HttpResponseRedirect(reverse('blog:single_post',
                                             args=[post.slug]))
+
+
+# allows the user to edit the comments
+
+def edit_comment(self, request, post, id):
+    comment = get_object_or_404(Comment, id=id)
+
+    if request.user != comment.user:
+        return HttpResponseForbidden()
+
+    if request.method == 'POST':
+        comment_form = UserCommentForm(data=request.POST, instance=comment)
+        if comment_form.is_valid():
+            comment = comment_form.save()
+
+    else:
+        comment_form = UserCommentForm(instance=comment)
+
+    return render(request, "edit_comment.html",
+                  {"comment_form": comment_form})
+
+
+def delete_comment(request, id):
+    comment = get_object_or_404(Comment, id=id)
+    post_slug = comment.post.slug  # Get the slug of the post associated with the comment
+    comment.delete()
+    return redirect(reverse('blog:single_post', args=[post_slug]))
