@@ -96,9 +96,6 @@ class ClapPosts(View):
 def edit_comment(request, id):
     comment = get_object_or_404(Comment, id=id)
 
-    if request.user != comment.user:
-        return HttpResponseForbidden()
-
     if request.method == 'POST':
         comment_form = UserCommentForm(data=request.POST, instance=comment)
         if comment_form.is_valid():

@@ -67,13 +67,17 @@
 
                             <button class="btn btn-primary">Edit</button>
 
-                            <div >
+                            <div>
                                 <!-- Create a Form -->
-                                <form  class="d-inline" action="{% url 'blog:delete_comment' comment.id %}" method="POST">
+                                <a class="btn btn-light btn-sm" href="{% url 'blog:edit_comment' comment.id %}">
+                                    <i class="fa-solid fa-edit"></i>
+                                </a>
+                                <form class="d-inline" action="{% url 'blog:delete_comment' comment.id %}"
+                                    method="POST">
 
                                     {% csrf_token %}
-                                    <input  type="hidden"/>
-                                    <button class="btn btn-primary"  type="submit" >
+                                    <input type="hidden" />
+                                    <button class="btn btn-primary" type="submit">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>
                                 </form>
