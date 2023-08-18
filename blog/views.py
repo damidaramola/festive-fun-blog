@@ -93,7 +93,7 @@ class ClapPosts(View):
 
 # allows the user to edit the comments
 
-def edit_comment(self, request, post, id):
+def edit_comment(request, id):
     comment = get_object_or_404(Comment, id=id)
 
     if request.user != comment.user:
