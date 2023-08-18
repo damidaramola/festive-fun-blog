@@ -77,6 +77,12 @@ class SinglePost(View):
                        "commented": True,
                        "comment_form": comment_form, },)
 
+        def valid_form(self, comment_form):
+            """ validate the form and connect it to the user """
+
+            comment_form.instance.created_by = self.request.user
+            return super().form_valid(comment_form)
+
 
 # like(clap) and unlike(un-clap) posts
 
