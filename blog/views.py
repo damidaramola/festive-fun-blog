@@ -125,8 +125,6 @@ cloudinary_image_urls = [
     "https://res.cloudinary.com/dkkkwd8ho/image/upload/v1692427565/colour_festival_fxyjsz.jpg",
     "https://res.cloudinary.com/dkkkwd8ho/image/upload/v1692427565/friends-festival_orgdpa.jpg",
     "https://res.cloudinary.com/dkkkwd8ho/image/upload/v1692431149/cultural-festival-3_s166d1.jpg",
-    
-
 ]
 
 # Fetch all posts

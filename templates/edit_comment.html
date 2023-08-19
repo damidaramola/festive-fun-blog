@@ -5,7 +5,7 @@
 <div>
     {% if user.is_authenticated %}
     <h3>Edit Comment:</h3>
-    <form  method="POST"> 
+    <form method="POST"> 
         {{ comment_form | crispy }}
         {% csrf_token %}
         <input type="hidden" >
