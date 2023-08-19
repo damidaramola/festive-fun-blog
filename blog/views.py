@@ -3,7 +3,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from .models import Post, Comment
 from django.views import generic, View
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from .forms import UserCommentForm
 
 
@@ -87,6 +87,7 @@ class SinglePost(View):
 # like(clap) and unlike(un-clap) posts
 
 class ClapPosts(View):
+    @login_required
     def post(self, request, post, *args, **kwargs):
         post = get_object_or_404(Post, slug=post)
         if post.claps.filter(id=request.user.id).exists():
@@ -97,8 +98,13 @@ class ClapPosts(View):
                                             args=[post.slug]))
 
 
+@login_required
 def edit_comment(request, id):
     comment = get_object_or_404(Comment, id=id)
+    
+    # Ensure that only the owner of the comment can edit it
+    if comment.user_name != request.user:
+        return HttpResponseForbidden("You don't have permission to edit this comment.")
 
     if request.method == 'POST':
         comment_form = UserCommentForm(data=request.POST, instance=comment)
@@ -113,6 +119,7 @@ def edit_comment(request, id):
     return render(request, "edit_comment.html", {"comment_form": comment_form})
 
 
+@login_required
 def delete_comment(request, id):
     comment = get_object_or_404(Comment, id=id)
     post_slug = comment.post.slug  # Get the slug of the post associated with the comment
