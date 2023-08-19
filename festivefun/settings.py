@@ -29,7 +29,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 ALLOWED_HOSTS = ['8000-damidaramola-festivefun-ldnqs06fk92.ws-eu104.gitpod.io',
@@ -103,17 +103,6 @@ TEMPLATES = [
 
 
 WSGI_APPLICATION = 'festivefun.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
 DATABASES = {
      'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
