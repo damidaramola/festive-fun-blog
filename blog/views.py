@@ -60,11 +60,11 @@ class SinglePost(View):
 
         comment_form = UserCommentForm(data=request.POST)
         if comment_form.is_valid():
-            comment_form.instance.email = request.user.email
             comment_form.instance.name = request.user.username
             comment = comment_form.save(commit=False)
             comment.post = post
             comment.save()
+
         else:
             comment_form = UserCommentForm()
 
@@ -77,11 +77,11 @@ class SinglePost(View):
                        "commented": True,
                        "comment_form": comment_form, },)
 
-        def valid_form(self, comment_form):
-            """ validate the form and connect it to the user """
+    def valid_form(self, comment_form):
+        """ validate the form and connect it to the user """
 
-            comment_form.instance.created_by = self.request.user
-            return super().form_valid(comment_form)
+        comment_form.instance.created_by = self.request.user
+        return super().form_valid(comment_form)
 
 
 # like(clap) and unlike(un-clap) posts

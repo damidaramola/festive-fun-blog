@@ -46,7 +46,6 @@ class Comment(models.Model):
     user_name = models.CharField(max_length=80)
     post = models.ForeignKey(Post, on_delete=models.CASCADE,
                              related_name='comments')
-    email = models.EmailField()
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     accepted = models.BooleanField(default=False)
