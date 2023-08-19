@@ -16,7 +16,7 @@ def home_list(request):
     # query to select all posts from the posts table in database
     all_posts = Post.objects.all().filter(status=1)
     return render(request, 'index.html', {'posts': all_posts})
-    paginate_by = 4
+    paginate_by = 3
 
 # about page
 
@@ -118,3 +118,21 @@ def delete_comment(request, id):
     post_slug = comment.post.slug  # Get the slug of the post associated with the comment
     comment.delete()
     return redirect(reverse('blog:single_post', args=[post_slug]))
+
+
+# list of cloudinary images
+cloudinary_image_urls = [
+    "https://res.cloudinary.com/dkkkwd8ho/image/upload/v1692427565/colour_festival_fxyjsz.jpg",
+    "https://res.cloudinary.com/dkkkwd8ho/image/upload/v1692427565/friends-festival_orgdpa.jpg",
+    "https://res.cloudinary.com/dkkkwd8ho/image/upload/v1692431149/cultural-festival-3_s166d1.jpg",
+    
+
+]
+
+# Fetch all posts
+posts = Post.objects.all()
+
+# Update the featured_image field for each post using the corresponding image URL
+for post, featured_image in zip(posts, cloudinary_image_urls):
+    post.featured_image = featured_image
+    post.save()

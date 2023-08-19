@@ -14,9 +14,15 @@
                     <div class="text-muted font-italic mb-2">Created on {{post.created_on}} by {{post.author}}</div>
                 </header>
                 <!-- image featured in post -->
-                <figure class="mb-4"><img class="img-fluid rounded"
-                        src="https://res.cloudinary.com/dkkkwd8ho/image/upload/v1682269262/orange-festival-banner_bdwwtn.jpg"
-                        alt="orange-festival-banner" /></figure>
+          
+                        <figure class="mb-4" >
+                            <div class="card">
+                                <img src="{{ post.featured_image }}" alt="{{ post.title }}" class="card-img-top">
+                            </div>
+                        </figure>
+                        <div>
+
+                        </div>
                 <!-- Post content/body of text-->
                 <section class="mb-5 ">
                     <div> <strong>Category:</strong>

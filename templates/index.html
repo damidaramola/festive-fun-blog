@@ -67,9 +67,9 @@
   <div class="container-fluid p-5">
     <div class="row">
       {% for post in posts %}
-      <div class="col-lg-3 mb-4">
+      <div class="col-lg-4 mb-4">
         <div class="card">
-          <img src="https://res.cloudinary.com/dkkkwd8ho/image/upload/v1682269260/outdoor-festival_zvfkqv.jpg" alt="outdoor-festival" class="card-img-top">
+          <img src="{{ post.featured_image }}" alt="{{ post.title }}" class="card-img-top">
           <div class="card-body">
             <a class="text-dark text-decoration-none" href="{{post.get_absolute_url}}">
             <h6 class="text-muted text-uppercase">
