@@ -37,5 +37,8 @@
    },
    "[python]": {
       "editor.defaultFormatter": "ms-python.python"
+   },
+   "[markdown]": {
+      "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
    }
 }
