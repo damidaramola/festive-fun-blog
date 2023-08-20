@@ -45,6 +45,13 @@ FestiveFun is a blog which provides readers with exposure to some of the top mus
 
 
 ## Testing
+[WC3 Validator for html](https://validator.w3.org/)
+
+- The HTML code has the Django code incorporated meaning that this will naturally lead to errors in the WC3 Validator tests
+
+![Capture](https://github.com/damidaramola/festivefun/assets/110638513/69d59b41-ea53-4094-bce9-935b7c23c8cd)
+
+
 
 ### Manual Testing of User Stories
 
