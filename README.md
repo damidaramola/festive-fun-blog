@@ -52,14 +52,51 @@ FestiveFun is a blog which provides readers with exposure to some of the top mus
 
  ### WireFrames
 
+- These wireframes cover the user interfaces of the main posts including the blog post page, landing page and the sign in and sign up pages'
+
+![blog wireframe](https://github.com/damidaramola/festivefun/assets/110638513/1ef967e4-c04d-412b-94dc-21d57af937ec)
+![blog post wireframe](https://github.com/damidaramola/festivefun/assets/110638513/e56e7d65-febd-4694-b481-59cbe7195933)
+![sign up page wireframe](https://github.com/damidaramola/festivefun/assets/110638513/c8bbb859-7bfd-4e2c-8cd3-530e89acd346)
+![Sign in wireframe](https://github.com/damidaramola/festivefun/assets/110638513/e5f54ede-31ac-4249-8267-6eb5aadf9dba)
 
 ## Features
+
+ The home page is the feature you see once you first land on the blog website
+
+![Home Page](https://github.com/damidaramola/festivefun/assets/110638513/cf7d6053-7785-4b9b-adbf-3f7bbc192d57)
+
+- A user can access the About us page using the link through the carousel
+
+![about us](https://github.com/damidaramola/festivefun/assets/110638513/4df6ce0d-819f-43f5-aaa7-20549d8ace9e)
+
+- The user can sign in to be able to comment , like posts and edit posts
+
+![Sign in](https://github.com/damidaramola/festivefun/assets/110638513/4b17ecd5-58f1-4fa4-8d72-1664e20d7f66)
+
+- Here in the blog detail page , we can see The title of the blog, the date it was created on , the category which the blog is in and the blog content
+
+![blog detail](https://github.com/damidaramola/festivefun/assets/110638513/626eb832-7da7-49ed-be11-00e958aff0f8)
+
+- The carousel shows some images for inspiration to festival goers
+
+![Carousel](https://github.com/damidaramola/festivefun/assets/110638513/e1015a18-805b-4124-903f-38d617406a28)
+
+- Once the user comments through the form , the comment is sent to the admin panel from approval
+
+![comment waiting approval](https://github.com/damidaramola/festivefun/assets/110638513/0af8bb64-9af0-4f85-ba4c-44f44fbe49c5)
+
+This user is notified when they are logged in / signed out
+![feedback message](https://github.com/damidaramola/festivefun/assets/110638513/bcaf4c0c-b6da-41c3-afe1-e885fa3d5d56)
+
+- when users are logged out, thy must sign up/signin in order to like posts or comment
+
+![likes logged out comments](https://github.com/damidaramola/festivefun/assets/110638513/3844f198-57ab-4a93-ba46-db116465ad31)
+
+![write a comment](https://github.com/damidaramola/festivefun/assets/110638513/8ef1efdc-d22d-460a-8e7c-317e59e75669)
 
 
 ## Technologies I used 
 
-
-## Future Features
 
 
 ## Testing
@@ -167,8 +204,6 @@ FestiveFun is a blog which provides readers with exposure to some of the top mus
 
 ![Light house testing](https://github.com/damidaramola/festivefun/assets/110638513/4f5407de-dc99-4a30-9d50-028d84f1c00b)
  
-## Validation
-
 
 ## Bugs
 
