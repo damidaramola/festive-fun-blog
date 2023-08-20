@@ -77,12 +77,6 @@ class SinglePost(View):
                        "commented": True,
                        "comment_form": comment_form, },)
 
-    def valid_form(self, comment_form):
-        """ validate the form and connect it to the user """
-
-        comment_form.instance.created_by = self.request.user
-        return super().form_valid(comment_form)
-
 
 # like(clap) and unlike(un-clap) posts
 
@@ -101,10 +95,6 @@ class ClapPosts(View):
 @login_required
 def edit_comment(request, id):
     comment = get_object_or_404(Comment, id=id)
-    
-    # Ensure that only the owner of the comment can edit it
-    if comment.user_name != request.user:
-        return HttpResponseForbidden("You don't have permission to edit this comment.")
 
     if request.method == 'POST':
         comment_form = UserCommentForm(data=request.POST, instance=comment)

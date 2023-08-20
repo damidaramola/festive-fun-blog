@@ -22,11 +22,11 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('body', 'user_name', 'accepted', 'created_on')
     list_filter = ('accepted', 'created_on')
     search_fields = ('user_name', 'email', 'body')
-  
-    # accept comments from users on blog
-    actions = ['accepted_comments']
-   
-    def accept_comments(self, request, queryset):
-        queryset.update(accepted=True)
 
-       
+
+# accept comments from users on blog
+actions = ['accepted_comments']
+
+
+def accept_comments(self, request, queryset):
+    queryset.update(accepted=True)

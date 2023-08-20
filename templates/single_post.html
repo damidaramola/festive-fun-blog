@@ -67,7 +67,7 @@
                         {% for comment in comments %}
                         <div class="mb-1 d-flex">{{forloop.counter}}. {{ comment.body | linebreaks }}
                         </div>
-                        <div class="text-muted font-italic mb-2"> By {{ comment.user_name }} on {{ comment.created_on }}
+                        <div class="text-muted font-italic mb-2"> By {{ comment.user_name}} on {{ comment.created_on }}
                             <!-- user can edit their comments  -->
                             {% if user.is_authenticated and user.username == comment.user_name %}
 
