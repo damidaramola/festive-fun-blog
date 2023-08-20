@@ -151,15 +151,15 @@ This user is notified when they are logged in / signed out
 [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) was used to style my forms
 
 - Summernote
-[Summernote](https://summernote.org/) was used To give the admin more options to customize blog posts in the editor.
+[Summernote](https://summernote.org/) was used to give the admin more options to customize blog posts in the editor.
 
 ## Deployment
 
 ### Heroku
-[Heroku](https://www.heroku.com/) is where I deployed to the blog.
+[Heroku](https://www.heroku.com/) is where I deployed the blog.
 
 ### Gunicorn
-[Gunicorn](https://gunicorn.org/) was use to the project to Heroku.
+[Gunicorn](https://gunicorn.org/) was used to deploy the project to Heroku.
 
 ### Cloudinary
 [Cloudinary](https://cloudinary.com/) was used to host static/media files and serve them to Heroku.
